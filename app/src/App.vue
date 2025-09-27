@@ -18,7 +18,10 @@ export default {
 <style>
 #bg {
   background-color: darkgreen;
-  width: 90vw;
-  height:90vh;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 </style>

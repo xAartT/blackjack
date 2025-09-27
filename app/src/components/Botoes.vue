@@ -28,7 +28,7 @@ export default {
 <style scoped>
     #container {
         border-radius: 5px;
-        width: 40%;
+        width: 20%;
         height: 10%;
         top: 0;
         right: 0;

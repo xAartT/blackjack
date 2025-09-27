@@ -2,11 +2,16 @@
   <div id="body">
     <div id="containerDealer">
       <Carta 
+        v-if="mostrarCartasDealer"
         v-for="(carta, i) in maoDealer" 
         :key="i" 
         :valor="carta.valor" 
         :naipe="carta.naipe"
       />
+
+      <CartaVerso
+        v-if="!mostrarCartasDealer"
+        v-for="(carta, i) in maoDealer"/>
     </div>
 
     <div>
@@ -41,13 +46,15 @@ import * as gameService from '../services/gameService.js'
 import Botoes from '../components/Botoes.vue';
 import Carta from '../components/TemplateCarta.vue';
 import Alerta from '../components/Alerta.vue';
+import CartaVerso from '../components/CartaVerso.vue';
 
 export default {
   name: "Jogo",
   components: {
     Botoes,
     Carta,
-    Alerta
+    Alerta,
+    CartaVerso
   },
 
   data() {
@@ -60,6 +67,7 @@ export default {
       aviso: null,
       msg: null,
       type: null,
+      exibirCartasDealer: false,
     }
   },
 
@@ -151,11 +159,6 @@ export default {
       const pensandoPor = Math.random() * 5000;
       await new Promise(resolve => setTimeout(resolve, pensandoPor));
 
-      if (!this.gameId) {
-        console.error('gameId está indefinido no jogadaDealer!');
-        return;
-      }
-
       try {
         let pontosDealer = this.checkPartida(this.maoDealer);
 
@@ -167,7 +170,11 @@ export default {
           await new Promise(resolve => setTimeout(resolve, 800));
         }
 
-        this.finalizarJogo();
+        if (this.checkPartida(this.maoDealer) >= 21) {
+          this.finalizarJogo();
+        } else {
+          this.vez = "jogador";
+        }
 
       } catch (err) {
         console.error('Erro ao buscar carta do dealer:', err.response?.data || err.message);
@@ -179,6 +186,7 @@ export default {
     },
 
     finalizarJogo() {
+      this.mostrarCartasDealer = true;
       const pontosJogador = this.checkPartida(this.maoJogador);
       const pontosDealer = this.checkPartida(this.maoDealer);
       this.notificarResultado(pontosJogador, pontosDealer);
@@ -203,27 +211,34 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 #containerDealer {
-  border: 2px white dotted;
   width: 45%;
   height: 45%;
 }
 
 #containerJogador {
-  border: 2px white dotted;
   width: 45%;
-  height: 45%;
+  height: 20%;
   bottom: 0;
-  right: 0;
   position: absolute;
 }
 
 #containerLegenda {
-  bottom: 0;
+  top: 0;
   left: 0;
   position: absolute;
   margin: 15px;
   color: white;
 }
+
+#deckCentral {
+  background-color: red;
+  z-index: 9;
+  align-self: center;
+  place-self: center;
+  justify-self: center;
+};
 </style>
