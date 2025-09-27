@@ -61,7 +61,7 @@ O componente `Alerta` é usado para exibir mensagens no fim do jogo, informando 
 
 1. Na pasta raiz é necessário rodar o comando ```npm install```
 2. É necessário acessar a pasta app(frontend) e instalar as dependências ```cd app > npm install```
-3. Após isso é necessário fazer o mesmo para a pasta api(frontend) ```cd .. > cd api > npm install```
+3. Após isso é necessário fazer o mesmo para a pasta api(backend) ```cd .. > cd api > npm install```
 4. E por fim basta acessar a pasta raíz e utilizar o comando ```npm run up```
 
 Dessa maneira vai subir o frontend e o backend ao mesmo tempo e acessar o endereço exibido pelo vite no terminal (geralmente ```http://localhost:5173```)
