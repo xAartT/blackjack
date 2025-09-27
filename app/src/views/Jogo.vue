@@ -214,16 +214,26 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 #containerDealer {
-  width: 45%;
+  width: 100%;
   height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 #containerJogador {
-  width: 45%;
-  height: 20%;
+  width: 100%;
+  height: 45%;
   bottom: 0;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
 #containerLegenda {
@@ -240,5 +250,5 @@ export default {
   align-self: center;
   place-self: center;
   justify-self: center;
-};
+}
 </style>
