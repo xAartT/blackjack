@@ -37,10 +37,10 @@
     </div>
   </div>
 
-  <Alerta v-model="showAlert" :title="aviso" :message="msg" :type="type" />
+  <CartaVerso style="position: fixed; top: 50%; left: 9.5%; transform: translate(-50%, -50%);"/>
+  <CartaVerso style="position: fixed; top: 50%; left: 10%; transform: translate(-50%, -50%);"/>
 
-  <CartaVerso style="position: fixed; top: 50%; left: 9.5%; transform: translate(-50%, -50%); z-index: 9999;"/>
-  <CartaVerso style="position: fixed; top: 50%; left: 10%; transform: translate(-50%, -50%); z-index: 9999;"/>
+  <Alerta v-model="showAlert" :title="aviso" :message="msg" :type="type" />
 
 </template>
 
